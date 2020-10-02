@@ -18,6 +18,7 @@ Resolução do teste proposto de replicação do Layout
 ## Tecnologias Utilizadas
 
 * Vue.js
+* Vuetify
 * Sass
 * JavaScript
 
