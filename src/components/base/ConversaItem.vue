@@ -3,14 +3,14 @@
     :color="conteudo.color"
     dark
     class="pa-2 ma-2"
-    @click="setAlvoMensagem(conteudo)"
+    @click="mudaAlvoConversa(conteudo)"
   >
     <div class="d-flex flex-no-wrap justify-space-between">
       <v-avatar
         class="ma-3"
         size="75"
       >
-        <v-img :src="conteudo.foto" />
+        <v-img :src=" conteudo.foto ? require(`@/assets/imagens/${conteudo.foto}`) :  ''" />
       </v-avatar>
       <div class="flex-grow-1 d-flex flex-column justify-center hidden-sm-and-down">
         <v-card-title
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import { mapGetters, mapMutations } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'ListaConversas',
     components: {
@@ -40,9 +40,7 @@
       ...mapGetters({ lendo: 'isLendoMensagem' }),
     },
     methods: {
-      ...mapMutations({
-        setAlvoMensagem: 'SET_ALVO_CONVERSA',
-      }),
+      ...mapActions({ mudaAlvoConversa: 'mudaAlvoConversa' }),
     },
   }
 </script>

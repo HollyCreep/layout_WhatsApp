@@ -37,7 +37,7 @@
         :items="items"
         :search="search"
         item-key="title"
-        :items-per-page="4"
+        :items-per-page="10"
         hide-default-footer
         no-data-text="Nenhuma conversa encontrada."
       >

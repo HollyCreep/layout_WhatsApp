@@ -11,35 +11,42 @@ export default new Vuex.Store({
       {
         id: 1,
         color: '#1F7087',
-        foto: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
+        foto: 'user0.png',
         nome: 'Supermodel',
         ultima_mensagem: 'Foster the People',
       },
       {
         id: 2,
         color: '#952175',
-        foto: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+        foto: 'user1.png',
         nome: 'Halcyon Days',
         ultima_mensagem: 'Ellie Goulding',
       },
       {
         id: 3,
         color: '#952175',
-        foto: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+        foto: 'user2.jpg',
         nome: 'Halcyon Days',
         ultima_mensagem: 'Ellie Goulding',
       },
       {
         id: 4,
         color: '#952175',
-        foto: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+        foto: 'user3.jpg',
         nome: 'Halcyon Days',
         ultima_mensagem: 'Ellie Goulding',
       },
       {
         id: 5,
         color: '#952175',
-        foto: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+        foto: 'user4.jpg',
+        nome: 'Halcyon Days',
+        ultima_mensagem: 'Ellie Goulding',
+      },
+      {
+        id: 6,
+        color: '#952175',
+        foto: 'user5.png',
         nome: 'Halcyon Days',
         ultima_mensagem: 'Ellie Goulding',
       },
@@ -75,8 +82,17 @@ export default new Vuex.Store({
     },
   },
   actions: {
-
-  },
+    mudaAlvoConversa (state, payload) {
+      if (!state.state.alvoConversa.id) {
+        state.commit('SET_ALVO_CONVERSA', payload)
+      } else {
+        state.commit('SET_ALVO_CONVERSA', {
+          nome: '',
+          foto: '',
+        })
+      }
+    },
+},
   getters: {
     isLoading: state => state.loading,
     getMensagens: state => state.listaMensagem,

@@ -14,7 +14,7 @@
         class="ma-3"
         size="75"
       >
-        <v-img :src="alvo.foto" />
+        <v-img  :src=" alvo.foto ? require(`@/assets/imagens/${alvo.foto}`) :  ''" />
       </v-avatar>
       <v-card-title
         class="headline fill-height"
@@ -22,7 +22,14 @@
       />
       <v-spacer />
       <div class="fill-height d-flex align-center">
-      <v-btn icon large><v-icon>mdi-close</v-icon></v-btn>
+        <v-btn
+          icon
+          large
+        >
+          <v-icon @click="mudaAlvoConversa()">
+            mdi-close
+          </v-icon>
+        </v-btn>
       </div>
     </v-toolbar>
     <v-card-text>
@@ -30,16 +37,11 @@
         <v-timeline-item
           v-for="(item,index) in mensagem"
           :key="index"
-          color="primary"
+          :color="item.autor == `self` ? '#CCFF90' : 'primary'"
           :left="item.autor == 'self'"
           :right="item.autor != 'self'"
         >
-          <v-card>
-            <v-card-title class="primary">
-              <h2 class="display-1 white--text font-weight-light">
-                Title 1
-              </h2>
-            </v-card-title>
+          <v-card :color="item.autor == `self` ? '#CCFF90' : 'primary'">
             <v-container>
               <v-row>
                 <v-col
@@ -57,11 +59,14 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
     name: 'MensagemItem',
     computed: {
       ...mapGetters({ mensagem: 'getMensagemAtual', alvo: 'getAlvoConversa' }),
+    },
+    methods: {
+      ...mapActions({ mudaAlvoConversa: 'mudaAlvoConversa' }),
     },
   }
 </script>
