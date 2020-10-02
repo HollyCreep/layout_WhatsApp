@@ -32,7 +32,6 @@
 
     <v-container
       fluid
-      class="fill-height"
     >
       <v-data-iterator
         :items="items"
