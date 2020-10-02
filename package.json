@@ -1,0 +1,44 @@
+{
+  "name": "don-advice",
+  "version": "2.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve --open",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "now-start": "vue-cli-service serve",
+    "scss": "node-sass -watch scss -o css"
+  },
+  "dependencies": {
+    "core-js": "^3.6.2",
+    "node-sass": "^4.14.1",
+    "vee-validate": "^3.4.0",
+    "vue": "^2.6.11",
+    "vue-resource": "^1.5.1",
+    "vue-router": "^3.1.3",
+    "vue-the-mask": "^0.11.1",
+    "vuetify": "^2.2.11",
+    "vuex": "^3.1.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-e2e-cypress": "^4.1.2",
+    "@vue/cli-plugin-eslint": "^4.1.2",
+    "@vue/cli-plugin-unit-jest": "^4.1.2",
+    "@vue/cli-service": "^4.1.2",
+    "@vue/eslint-config-standard": "^5.0.1",
+    "@vue/test-utils": "1.0.0-beta.30",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.8.0",
+    "eslint-config-vuetify": "^0.4.1",
+    "eslint-plugin-vue": "^6.1.2",
+    "sass": "^1.24.3",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "^2.0.3",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.4.3"
+  }
+}
