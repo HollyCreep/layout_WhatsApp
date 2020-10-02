@@ -1,24 +1,25 @@
 
-# Teste Layout
+# Teste Layout WhatsApp 
 
 
 Resolução do teste proposto de replicação do Layout
-### Layout Proposto
-![Alt text](src/assets/layout.png?raw=true "Layout Proposto")
-
-### Resultado
-![Alt text](src/assets/resultado.jpg?raw=true "Resultado")
-
+### Mobile
+![Alt text](src/assets/mobile.JPG?raw=true "Layout Proposto")
+### Layout 
+![Alt text](src/assets/resultado.JPG?raw=true "Layout Proposto")
 
 ## Pontos Abordados
 
 * Layout Resposivo
 * Componentização
 * Exemplo de Controle do Estado da Aplicação com Vuex
-* Exemplo de Rotas
-* Exemplo de Validação de Formulário
-* Exemplo de consumo de APis e chamadas Assíncronas
 
+
+## Tecnologias Utilizadas
+
+* Vue.js
+* Sass
+* JavaScript
 
 ## Instalação
 ```sh

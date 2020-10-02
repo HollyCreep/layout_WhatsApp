@@ -10,49 +10,69 @@ export default new Vuex.Store({
     listaConversas: [
       {
         id: 1,
-        color: '#1F7087',
+        color: 'secondary',
         foto: 'user0.png',
-        nome: 'Supermodel',
-        ultima_mensagem: 'Foster the People',
+        nome: 'Paulo Castro',
+        ultima_mensagem: 'Você está contratado!',
       },
       {
         id: 2,
-        color: '#952175',
+        color: 'secondary',
         foto: 'user1.png',
-        nome: 'Halcyon Days',
-        ultima_mensagem: 'Ellie Goulding',
+        nome: 'Gustavo',
+        ultima_mensagem: 'Vue é incrível!',
       },
       {
         id: 3,
-        color: '#952175',
+        color: 'secondary',
         foto: 'user2.jpg',
-        nome: 'Halcyon Days',
-        ultima_mensagem: 'Ellie Goulding',
+        nome: 'Alfredo',
+        ultima_mensagem: 'Cara o chefe está te procurando!',
       },
       {
         id: 4,
-        color: '#952175',
+        color: 'secondary',
         foto: 'user3.jpg',
-        nome: 'Halcyon Days',
-        ultima_mensagem: 'Ellie Goulding',
+        nome: 'Michel',
+        ultima_mensagem: 'Não acredito que você disse aquilo na reunião! kkk',
       },
       {
         id: 5,
-        color: '#952175',
+        color: 'secondary',
         foto: 'user4.jpg',
-        nome: 'Halcyon Days',
-        ultima_mensagem: 'Ellie Goulding',
+        nome: 'Carolina',
+        ultima_mensagem: 'Você conhece a Isabela ?',
       },
       {
         id: 6,
-        color: '#952175',
+        color: 'secondary',
         foto: 'user5.png',
-        nome: 'Halcyon Days',
-        ultima_mensagem: 'Ellie Goulding',
+        nome: 'Isabela',
+        ultima_mensagem: 'Você conhece a Carolina ?',
       },
     ],
     listaMensagem: [],
     mensagemAtual: [
+      {
+        texto: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto modi enim delectus. Quia consequatur quisquam dignissimos voluptate, omnis magnam est. Impedit amet adipisci et explicabo rerum voluptates itaque magnam fugiat!',
+        autor: '',
+      },
+      {
+        texto: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto modi enim delectus. Quia consequatur quisquam dignissimos voluptate, omnis magnam est. Impedit amet adipisci et explicabo rerum voluptates itaque magnam fugiat!',
+        autor: '',
+      },
+      {
+        texto: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto modi enim delectus. Quia consequatur quisquam dignissimos voluptate, omnis magnam est. Impedit amet adipisci et explicabo rerum voluptates itaque magnam fugiat!',
+        autor: 'self',
+      },
+      {
+        texto: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto modi enim delectus. Quia consequatur quisquam dignissimos voluptate, omnis magnam est. Impedit amet adipisci et explicabo rerum voluptates itaque magnam fugiat!',
+        autor: '',
+      },
+      {
+        texto: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto modi enim delectus. Quia consequatur quisquam dignissimos voluptate, omnis magnam est. Impedit amet adipisci et explicabo rerum voluptates itaque magnam fugiat!',
+        autor: 'self',
+      },
       {
         texto: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto modi enim delectus. Quia consequatur quisquam dignissimos voluptate, omnis magnam est. Impedit amet adipisci et explicabo rerum voluptates itaque magnam fugiat!',
         autor: 'self',
@@ -80,17 +100,23 @@ export default new Vuex.Store({
     SET_ALVO_CONVERSA (state, payload) {
       state.alvoConversa = payload
     },
+    SET_CONVERSA_ATUAL (state, payload) {
+      if (payload) {
+        state.mensagemAtual.slice(-1)[0].autor !== 'self' && state.mensagemAtual.pop()
+        state.mensagemAtual.push({ autor: payload.nome, texto: payload.ultima_mensagem })
+      }
+    },
+    SET_NOVA_MENSAGEM (state, payload) {
+      state.mensagemAtual.push({ autor: 'self', texto: payload })
+    },
   },
   actions: {
     mudaAlvoConversa (state, payload) {
-      if (!state.state.alvoConversa.id) {
-        state.commit('SET_ALVO_CONVERSA', payload)
-      } else {
-        state.commit('SET_ALVO_CONVERSA', {
-          nome: '',
-          foto: '',
-        })
-      }
+      payload && payload.id !== state.state.alvoConversa.id ? state.commit('SET_ALVO_CONVERSA', payload) : state.commit('SET_ALVO_CONVERSA', {})
+      state.commit('SET_CONVERSA_ATUAL', payload)
+    },
+    enviaMensagem (state, payload) {
+      state.commit('SET_NOVA_MENSAGEM', payload)
     },
 },
   getters: {
@@ -99,7 +125,6 @@ export default new Vuex.Store({
     getMensagemAtual: state => state.mensagemAtual,
     getAlvoConversa: state => state.alvoConversa,
     getConversas: state => state.listaConversas,
-    isLendoMensagem: state => state.alvoConversa.id,
   },
 
 })

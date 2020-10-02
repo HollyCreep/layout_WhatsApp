@@ -1,6 +1,6 @@
 <template>
   <v-card
-    :color="conteudo.color"
+    :color="alvo.id == conteudo.id ? 'primary' : conteudo.color"
     dark
     class="pa-2 ma-2"
     @click="mudaAlvoConversa(conteudo)"
@@ -10,13 +10,14 @@
         class="ma-3"
         size="75"
       >
-        <v-img :src=" conteudo.foto ? require(`@/assets/imagens/${conteudo.foto}`) :  ''" />
+        <v-img :src=" conteudo.foto ? require(`@/assets/imagens/${conteudo.foto}`) : ''" />
       </v-avatar>
       <div class="flex-grow-1 d-flex flex-column justify-center hidden-sm-and-down">
         <v-card-title
           class="headline"
-          v-text="conteudo.nome"
-        />
+        >
+          {{ conteudo ? conteudo.nome : '' }}
+        </v-card-title>
         <v-card-subtitle v-text="conteudo.ultima_mensagem" />
       </div>
     </div>
@@ -24,7 +25,7 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
   export default {
     name: 'ListaConversas',
     components: {
@@ -37,7 +38,7 @@
       },
     },
     computed: {
-      ...mapGetters({ lendo: 'isLendoMensagem' }),
+      ...mapGetters({ alvo: 'getAlvoConversa' }),
     },
     methods: {
       ...mapActions({ mudaAlvoConversa: 'mudaAlvoConversa' }),

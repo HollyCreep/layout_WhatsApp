@@ -1,15 +1,16 @@
 <template>
-  <v-content
-    width="100vw"
-    min-height="100vh"
+  <v-container
+    fluid
   >
     <v-app-bar
       dark
-      color="#00C853"
+      color="primary"
     >
       <v-app-bar-nav-icon />
 
-      <v-toolbar-title>Minhas Conversas</v-toolbar-title>
+      <v-toolbar-title class="text-h5">
+        Minhas Conversas
+      </v-toolbar-title>
 
       <v-spacer />
       <div class="d-flex">
@@ -29,24 +30,19 @@
         </v-btn>
       </div>
     </v-app-bar>
-
-    <v-container
-      fluid
+    <v-data-iterator
+      :items="items"
+      :search="search"
+      item-key="title"
+      :items-per-page="10"
+      hide-default-footer
+      no-data-text="Nenhuma conversa encontrada."
     >
-      <v-data-iterator
-        :items="items"
-        :search="search"
-        item-key="title"
-        :items-per-page="10"
-        hide-default-footer
-        no-data-text="Nenhuma conversa encontrada."
-      >
-        <template v-slot:default="{ items }">
-          <base-lista-conversas :lista-conversas="items" />
-        </template>
-      </v-data-iterator>
-    </v-container>
-  </v-content>
+      <template v-slot:default="{ items }">
+        <base-lista-conversas :lista-conversas="items" />
+      </template>
+    </v-data-iterator>
+  </v-container>
 </template>
 
 <script>

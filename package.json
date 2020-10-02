@@ -1,6 +1,6 @@
 {
-  "name": "don-advice",
-  "version": "2.1.0",
+  "name": "whatsapp",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --open",
